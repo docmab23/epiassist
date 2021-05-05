@@ -10,7 +10,7 @@ from sklearn.metrics import mean_absolute_error as mae
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import tensorflow as tf
 arrs = []
-MODEL_PATH = "/Epiassist_model2.h5"
+MODEL_PATH = "Epiassist_model2.h5"
 Threshold =   1.271  # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
 m = load_model(MODEL_PATH)
 
