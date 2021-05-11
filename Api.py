@@ -10,8 +10,8 @@ from sklearn.metrics import mean_absolute_error as mae
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import tensorflow as tf
 arrs = []
-MODEL_PATH = "./model_files/Epiassist_model2.h5"
-Threshold =   1.271  # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
+MODEL_PATH = "./model_files/Epiassist_model3.h5"
+Threshold =   1.21249 # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
 m = load_model(MODEL_PATH)
 
 def flatten(tensor):
@@ -35,10 +35,10 @@ def gdap():
     #arrs =[]
     oxy = float(request.args.get('oxy'))
     temp= float(request.args.get('temp'))
-    emg = float(request.args.get('emg'))
+    #emg = float(request.args.get('emg'))
     hrt = float(request.args.get('hrt'))
     acc = float(request.args.get('acc'))
-    arr = [oxy , temp , emg , hrt , acc]
+    arr = [oxy , temp , hrt , acc]
     #pred = m.predict(arr)
     arrs.append(arr)
     print(api.logger.info(arr))
@@ -46,7 +46,7 @@ def gdap():
     if len(arrs)>= 10:
           X =np.array(arrs[len(arrs)-10: len(arrs)])
           X = StandardScaler().fit_transform(X)
-          X =np.reshape(X ,(1,10,5))
+          X =np.reshape(X ,(1,10,4))
           pred= m.predict(X)
           err = tf.keras.losses.mae(flatten(X), flatten(pred))
           #print(np.shape(X))
