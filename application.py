@@ -20,16 +20,16 @@ def flatten(tensor):
         flattened_X[i] = tensor[i, (tensor.shape[1] - 1), :]
     return (flattened_X)
 
-api = Flask(__name__)
+application = Flask(__name__)
 
-@api.route("/",methods=["GET"])
+@application.route("/",methods=["GET"])
 def start():
     #try:
 	  return ("Epiassist_API is working" , 200)
     #except:
      # return (404)
 
-@api.route("/gdap",methods=["POST"])
+@application.route("/gdap",methods=["POST"])
 
 def gdap():
     #arrs =[]
@@ -59,7 +59,7 @@ def gdap():
     return "Get more data"
 
 if __name__ == '__main__':
-    api.run(debug=True)
+    application.run(debug=True)
 
 
 
