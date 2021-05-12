@@ -12,7 +12,7 @@ import tensorflow as tf
 arrs = []
 MODEL_PATH = "./model_files/Epiassist_model3.h5"
 Threshold =   1.21249 # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
-m = load_model(MODEL_PATH)
+m = tf.keras.models.load_model(MODEL_PATH)
 
 def flatten(tensor):
     flattened_X = np.empty((tensor.shape[0], tensor.shape[2]))  # sample x features array.
