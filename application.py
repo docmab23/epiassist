@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, abort, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 from flask import Flask, redirect, url_for, request, render_template
+from flask_ngrok import run_with_ngrok
 import logging
 #from gevent.pywsgi import WSGIServer
 from keras.models import load_model
@@ -21,7 +22,7 @@ def flatten(tensor):
     return (flattened_X)
 
 application = Flask(__name__)
-
+run_with_ngrok(application)
 @application.route("/",methods=["GET"])
 def start():
     #try:
