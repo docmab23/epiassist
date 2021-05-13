@@ -42,7 +42,7 @@ def gdap():
     arr = [oxy , temp , hrt , acc]
     #pred = m.predict(arr)
     arrs.append(arr)
-    print(api.logger.info(arr))
+    print(application.logger.info(arr))
     #return jsonify(arrs)
     if len(arrs)>= 10:
           X =np.array(arrs[len(arrs)-10: len(arrs)])
