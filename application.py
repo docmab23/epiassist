@@ -73,7 +73,7 @@ def gdap():
           else:
              return("Normal")
 
-    return ("Initializing")z
+    return ("Initializing")
 
 if __name__ == '__main__':
     application.run()
