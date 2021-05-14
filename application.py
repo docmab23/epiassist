@@ -25,7 +25,6 @@ headers = {
 MODEL_PATH = "./model_files/Epiassist_model3.h5"
 Threshold =   1.21249 # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
 m = tf.keras.models.load_model(MODEL_PATH)
-arrs =[]
 def flatten(tensor):
     flattened_X = np.empty((tensor.shape[0], tensor.shape[2]))  # sample x features array.
     for i in range(tensor.shape[0]):
@@ -40,7 +39,7 @@ def start():
 	  return ("Epiassist_API is working" , 200)
     #except:
      # return (404)
-
+arrs = []
 @application.route("/gdap",methods=["POST"])
 
 def gdap():
