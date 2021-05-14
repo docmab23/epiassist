@@ -10,6 +10,17 @@ import numpy as np
 from sklearn.metrics import mean_absolute_error as mae
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import tensorflow as tf
+import requests
+url = "https://www.fast2sms.com/dev/bulkV2"
+
+querystring = {"authorization":"paiXGTsvwx2UYNuFJlZVocjmKQBLrgd4IeqMkAb57z9OSRn0hywWgIxHZpbnY2OasUKEy4ACd3QTekvP","message":"Seizure is near , please help the patient","language":"english","route":"q","numbers":"9888953231,9772900422"}
+
+headers = {
+    'cache-control': "no-cache"
+}
+
+
+
 arrs = []
 MODEL_PATH = "./model_files/Epiassist_model3.h5"
 Threshold =   1.21249 # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
@@ -23,7 +34,7 @@ def flatten(tensor):
 
 application = Flask(__name__)
 run_with_ngrok(application)
-@application.route("/",methods=["GET"])
+@application.route("/",methods=["GET", "POST"])
 def start():
     #try:
 	  return ("Epiassist_API is working" , 200)
@@ -52,12 +63,17 @@ def gdap():
           err = tf.keras.losses.mae(flatten(X), flatten(pred))
           #print(np.shape(X))
           if err>=Threshold:
+
+              response = requests.request("GET", url, headers=headers, params=querystring)
+              print(response.text)
+
               return ("Seizure is near!")
+
               #print(err)
           else:
              return("Normal")
 
-    return "Get more data"
+    return "Initializing"
 
 if __name__ == '__main__':
     application.run()
