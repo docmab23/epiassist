@@ -62,6 +62,7 @@ def gdap():
     print(application2.logger.info(arr))
     print(arr)
     X = np.array(arr)
+    X = X.astype(np.float)
     # X = StandardScaler().fit_transform(X)
     X = np.reshape(X, (1, 1, 4))
     p = m.predict(X)
