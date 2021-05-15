@@ -53,6 +53,7 @@ def gdap():
     #pred = m.predict(arr)
     arrs.append(arr)
     print(application.logger.info(arr))
+    print(arr)
     #return jsonify(arrs)
     if len(arrs)>= 10:
           X =np.array(arrs[len(arrs)-10: len(arrs)])
