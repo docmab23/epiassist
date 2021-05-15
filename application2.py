@@ -56,7 +56,7 @@ def gdap():
     print(arr)
     #return jsonify(arrs)
     if len(arrs)>= 1:
-          X =np.array(arrs[len(arrs)-1])
+          X =np.array(arr)
           #X = StandardScaler().fit_transform(X)
           X =np.reshape(X ,(1,1,4))
           pred= m.predict(X)
