@@ -23,7 +23,7 @@ headers = {
 }
 
 MODEL_PATH = "./model_files/Epi_5.h5"
-Threshold = 5000  # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
+Threshold = 4500  # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
 m = tf.keras.models.load_model(MODEL_PATH)
 
 
@@ -72,6 +72,7 @@ def gdap():
 
             response = requests.request("GET", url, headers=headers, params=querystring)
             print(response.text)
+            print("Seizure")
 
             return ("Seizure is near!")
 
