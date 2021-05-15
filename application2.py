@@ -49,20 +49,22 @@ def start():
 arrs = []
 
 
-@application2.route("/gdap", methods=["POST"])
+@application2.route("/gdap", methods=["GET","POST"])
 def gdap():
-    oxy = (request.args.get('oxy'))
-    temp = (request.args.get('temp'))
+    data = request.args.get('data')
+
+    arr =[float(i) for i in data.split('-')]
+    #temp = (request.args.get('temp'))
     # emg = float(request.args.get('emg'))
-    hrt = (request.args.get('hrt'))
-    acc = (request.args.get('acc'))
-    arr = [oxy, temp, hrt, acc]
+    #hrt = (request.args.get('hrt'))
+    #acc = (request.args.get('acc'))
+    #arr = [oxy, temp, hrt, acc]
     # pred = m.predict(arr)
     #arrs.append(arr)
     print(application2.logger.info(arr))
     print(arr)
     X = np.array(arr)
-    X = X.astype(np.float)
+    #X = X.astype(np.float)
     # X = StandardScaler().fit_transform(X)
     X = np.reshape(X, (1, 1, 4))
     p = m.predict(X)
