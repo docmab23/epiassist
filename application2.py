@@ -22,8 +22,8 @@ headers = {
 
 
 
-MODEL_PATH = "./model_files/Epiassist_model4.h5"
-Threshold =  0.7841 # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
+MODEL_PATH = "./model_files/Epi_5.h5"
+Threshold = 7423.16  # Threshold set after training the model (set at 3 Std deviations from the mean reconstruction error)
 m = tf.keras.models.load_model(MODEL_PATH)
 def flatten(tensor):
     flattened_X = np.empty((tensor.shape[0], tensor.shape[2]))  # sample x features array.
@@ -57,7 +57,7 @@ def gdap():
     #return jsonify(arrs)
     if len(arrs)>= 1:
           X =np.array(arrs[len(arrs)-1])
-          X = StandardScaler().fit_transform(X)
+          #X = StandardScaler().fit_transform(X)
           X =np.reshape(X ,(1,1,4))
           pred= m.predict(X)
           err = tf.keras.losses.mae(flatten(X), flatten(pred))
