@@ -51,11 +51,11 @@ arrs = []
 
 @application2.route("/gdap", methods=["POST"])
 def gdap():
-    oxy = float(request.args.get('oxy'))
-    temp = float(request.args.get('temp'))
+    oxy = (request.args.get('oxy'))
+    temp = (request.args.get('temp'))
     # emg = float(request.args.get('emg'))
-    hrt = float(request.args.get('hrt'))
-    acc = float(request.args.get('acc'))
+    hrt = (request.args.get('hrt'))
+    acc = (request.args.get('acc'))
     arr = [oxy, temp, hrt, acc]
     # pred = m.predict(arr)
     #arrs.append(arr)
