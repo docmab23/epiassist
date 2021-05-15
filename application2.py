@@ -31,16 +31,16 @@ def flatten(tensor):
         flattened_X[i] = tensor[i, (tensor.shape[1] - 1), :]
     return (flattened_X)
 
-application = Flask(__name__)
-run_with_ngrok(application)
-@application.route("/",methods=["GET", "POST"])
+application2 = Flask(__name__)
+run_with_ngrok(application2)
+@application2.route("/",methods=["GET", "POST"])
 def start():
     #try:
 	  return ("Epiassist_API is working" , 200)
     #except:
      # return (404)
 arrs = []
-@application.route("/gdap",methods=["POST"])
+@application2.route("/gdap",methods=["POST"])
 
 def gdap():
  
@@ -52,7 +52,7 @@ def gdap():
     arr = [oxy , temp , hrt , acc]
     #pred = m.predict(arr)
     arrs.append(arr)
-    print(application.logger.info(arr))
+    print(application2.logger.info(arr))
     print(arr)
     #return jsonify(arrs)
     if len(arrs)>= 1:
@@ -76,7 +76,7 @@ def gdap():
     return ("Initializing")
 
 if __name__ == '__main__':
-    application.run()
+    application2.run()
 
 
 
