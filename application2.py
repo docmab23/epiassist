@@ -14,9 +14,9 @@ import requests
 
 url = "https://www.fast2sms.com/dev/bulkV2"
 
-querystring = {"authorization": "GU08Vb6cjuDkEQzCIKd9wtaRAqlN37FXLHeJSpM5vsY4ghiBymBYmyP1gAGHciZq4eXbUx9lpndJW0Iu",
+querystring = {"authorization": "Y5yhD1pUCnmG6e8bvNxF9o0IA7kqQ2Kdrg3iRucVEjlWOaZTX4SnYj9qoWmz6hHix3MRlVJ8gcDB4pb2",
                "message": "Seizure is near , please help the patient", "language": "english", "route": "q",
-               "numbers": "9888953231,9772900422"}
+               "numbers": "9888953231,9772900422,9783554288"}
 
 headers = {
     'cache-control': "no-cache"
@@ -62,7 +62,7 @@ def gdap():
     # pred = m.predict(arr)
     #arrs.append(arr)
     print(application2.logger.info(arr))
-    print(arr)
+    print("Oximeter: {oxy},Temperature: {temp} , Heart rate: {hrt} ,EMG: {emg}, Activity: {acc}".format(oxy= arr[0] , temp =arr[1] , hrt=arr[2] , emg = 157 ,acc=arr[3]))
     X = np.array(arr)
     #X = X.astype(np.float)
     # X = StandardScaler().fit_transform(X)
@@ -74,12 +74,13 @@ def gdap():
 
             response = requests.request("GET", url, headers=headers, params=querystring)
             print(response.text)
-            print("Seizure")
+            print("Seizure is near")
 
             return ("Seizure is near!")
 
             # print(err)
     else:
+            print("Normal")
             return ("Normal")
 
 
