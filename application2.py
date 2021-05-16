@@ -14,9 +14,9 @@ import requests
 
 url = "https://www.fast2sms.com/dev/bulkV2"
 
-querystring = {"authorization": "Y5yhD1pUCnmG6e8bvNxF9o0IA7kqQ2Kdrg3iRucVEjlWOaZTX4SnYj9qoWmz6hHix3MRlVJ8gcDB4pb2",
+querystring = {"authorization": "ICORfgkyj9WBJ6ENMT4zobwiPQGXZLHla251An738mecSsrvhKFwMXC8D7zP2grjUT1xo0q6sJWdayE9",
                "message": "Seizure is near , please help the patient", "language": "english", "route": "q",
-               "numbers": "9888953231,9772900422,9783554288"}
+               "numbers": "9888953231,9783554288"}
 
 headers = {
     'cache-control': "no-cache"
